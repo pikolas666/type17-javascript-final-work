@@ -8,7 +8,7 @@ body{
 }
 header{
     
-    height: 90px;
+    height: 50px;
     background-color: #FFCC01;
     display: flex;
     justify-content: space-between;
@@ -16,9 +16,14 @@ header{
     align-items: center;
 }
 .logo{
+    all: unset;
+    cursor: pointer;
     font-size: 35px;
     font-weight: 700;
     color: #3EA316;
+    background-color: white;
+    padding:5px 10px;
+    border-radius: 5px;
 }
 .nav{
     all: unset;
@@ -34,9 +39,9 @@ header{
     border:none;
     border-radius: 5px;
     width:250px;
-    align-items: center;
     height: 100%;
     padding:1rem;
+    cursor: pointer;
 }
 .nav a{
     all: unset;
@@ -58,6 +63,9 @@ header{
     align-items: center;
     height: 144px;
     border-bottom: 1px solid #e3e3e3;;
+}
+.card-description{
+    padding-bottom:9rem;
 }
 .card p{
     text-align: center;
@@ -136,11 +144,29 @@ header{
 .price::after {
     content: " €";
 }
+.description-wrapper{
+    position: relative;
+    
+}
 .description{
     padding:1rem;
     padding-bottom: 3rem;
 }
+.deleteBtn{
+    position: absolute;
+    right:20px;
+    border: none;
+    color: #e3e3e3;
+    background-color: red;
+    border-radius: 5px;
+    width: 100px;
+    height: 50px;
+    cursor: pointer;
 
+}
+.deleteBtn:hover{
+    background-color: rgb(154, 5, 5);
+}
 @media only screen and (max-width: 992px) {
     .logo{
         font-size: 15px;
@@ -156,5 +182,11 @@ header{
     header{
         height: 60px;
         padding: 0.5rem;
+    }
+    .text-wrapper{
+        gap:10px;
+    }
+    .card h1{
+        font-size: 10px;
     }
 }

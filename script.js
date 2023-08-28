@@ -14,7 +14,6 @@ const buildCard = (glasses) => {
     card.href = "./card.html?cardId=" + glasses.id;
     card.addEventListener('click', () => {
         localStorage.setItem('card', glasses.id);
-        console.log(glasses.id);
       });
        return card;
     };
