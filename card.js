@@ -11,6 +11,9 @@ const buildGlassesCard = (glasses) => {
   
     const price = document.getElementById("price");
     price.innerHTML = glasses.price;
+
+    const id = document.getElementById("id");
+    id.innerHTML = glasses.id;
   
     const photo = document.getElementById("photo");
     photo.src = glasses.photo;

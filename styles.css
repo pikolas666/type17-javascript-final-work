@@ -3,7 +3,7 @@ body{
     font-family: 'Open Sans', sans-serif;
 }
 .page-wrapper{
-    width: 60%;
+    width: 70%;
     margin: auto;
 }
 header{
@@ -24,20 +24,19 @@ header{
     all: unset;
     list-style: none;
     display: flex;
-    width: 50%;
     justify-content:space-evenly;
+    gap:10px;
     align-items: center;
 
 }
 .nav button{
     background-color: #3EA316;
-    display: flex;
     border:none;
     border-radius: 5px;
-    height: 80px;
     width:250px;
-    justify-content: center;
     align-items: center;
+    height: 100%;
+    padding:1rem;
 }
 .nav a{
     all: unset;
@@ -84,6 +83,7 @@ header{
     width: 200px;
     height: 100%;
     flex:1;
+    object-fit: cover;
     
 }
 .text-wrapper{
@@ -92,4 +92,69 @@ header{
     gap:2rem;
     justify-content: space-between;
     flex:3;
+}
+#photo{
+    width:100%;
+}
+.title{
+    color: #333;
+    font-size: 20px;
+    font-weight: 600;
+}
+.location{
+    color: #666;
+    font-size: 14px;
+    font-weight: 400;
+    margin: 0;
+}
+.id{
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+    background-color: #f3f3f3;
+    border: 1px solid #e3e3e3;
+    border-bottom: none;
+    border-top: none;
+    height: 40px;
+}
+.id::before{
+    content: "ID:";
+}
+.location-title-price-wrapper{
+    display: flex;
+    justify-content: space-between;
+    padding:1rem;
+}
+.price {
+    color: #419422;
+    font-size: 36px;
+    line-height: 36px;
+    margin: 0;
+    padding: 0;
+    text-align: right;
+}
+.price::after {
+    content: " €";
+}
+.description{
+    padding:1rem;
+    padding-bottom: 3rem;
+}
+
+@media only screen and (max-width: 992px) {
+    .logo{
+        font-size: 15px;
+         
+    }
+    .nav button{
+        width:150px;
+        padding:0.5rem;
+    }
+    .nav a{
+        font-size: 15px;
+    }
+    header{
+        height: 60px;
+        padding: 0.5rem;
+    }
 }
