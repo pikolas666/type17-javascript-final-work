@@ -1,17 +1,6 @@
 const cardList = document.getElementById('card-list');
 const glassesURL = "https://64ec4552f9b2b70f2bfa0585.mockapi.io/akiniai";
 
-// async function fetchData(url) {
-//     try {
-//       const response = await fetch(url);
-//       const dataArray = await response.json();
-//       return dataArray;
-//     } catch (error) {
-//       console.error("Error fetching data:", error);
-//       return [];
-//     }
-//   }
-
 const buildCard = (glasses) => {
     const card = document.createElement("a");
     card.setAttribute("class", "card");
@@ -22,9 +11,13 @@ const buildCard = (glasses) => {
         <h1>${glasses.title}</h1>
         <h2>${glasses.price}</h2>
     </div>`;
-    card.href = "./recipe.html?recipeId=" + glasses.id;
+    card.href = "./card.html?cardId=" + glasses.id;
+    card.addEventListener('click', () => {
+        localStorage.setItem('card', glasses.id);
+        console.log(glasses.id);
+      });
        return card;
-  };
+    };
   
   const displayGlasses = async () => {
     try {
