@@ -39,11 +39,57 @@ header{
     justify-content: center;
     align-items: center;
 }
-a{
+.nav a{
     all: unset;
     cursor: pointer;
     color: white;
     font-size: 25px;
     font-weight: 600;
     
+}
+.card-list{
+    display: flex;
+    flex-direction: column;
+    
+}
+.card{
+    all: unset;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    height: 144px;
+    border-bottom: 1px solid #e3e3e3;;
+}
+.card p{
+    text-align: center;
+    color: #606060;
+    font-size: 12px;
+    margin-top: 7px;
+    flex:0.8;
+}
+.card h1{
+    font-size: 18px;
+    font-weight: 600;
+    color: #339900;
+}
+.card h2{
+    color: #333;
+    font-size: 14px;
+    font-weight: bold;
+}
+.card h2::after{
+    content: " €"
+}
+.glasses-image{
+    width: 200px;
+    height: 100%;
+    flex:1;
+    
+}
+.text-wrapper{
+    display: flex;
+    flex-direction: column;
+    gap:2rem;
+    justify-content: space-between;
+    flex:3;
 }

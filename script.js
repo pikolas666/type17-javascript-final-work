@@ -1,18 +1,45 @@
-[
-    {
-      "title": "Tommy Hilfiger TH 1318 VN5",
-      "price": 64,
-      "photo": "https://cdn.alensa.lt/imagesCdn/16356/20577-800x600.webp",
-      "description": "Apie šiuos akinius. Ši forma žinoma kaip katės akių. Ji puikai tinka ovalaus ir keturkampio formos veidams. Mėlyna rėmelių spalva.",
-      "location": "Vilnius",
-      "id": "1"
-    },
-    {
-      "title": "Tommy Hilfiger TH 1531 SX7",
-      "price": 50,
-      "photo": "https://cdn.alensa.lt/imagesCdn/23891/35813-800x600.webp",
-      "description": "Apie šiuos akinius. Ši forma žinoma kaip katės akių. Ji puikai tinka ovalaus ir keturkampio formos veidams. Havana spalvos akinių rėmeliai vienareikšmiškai yra labai modernūs.",
-      "location": "Kaunas",
-      "id": "2"
+const cardList = document.getElementById('card-list');
+const glassesURL = "https://64ec4552f9b2b70f2bfa0585.mockapi.io/akiniai";
+
+// async function fetchData(url) {
+//     try {
+//       const response = await fetch(url);
+//       const dataArray = await response.json();
+//       return dataArray;
+//     } catch (error) {
+//       console.error("Error fetching data:", error);
+//       return [];
+//     }
+//   }
+
+const buildCard = (glasses) => {
+    const card = document.createElement("a");
+    card.setAttribute("class", "card");
+    card.innerHTML = `
+    <p>${glasses.location}</p>
+    <img class="glasses-image" src="${glasses.photo}" alt="${glasses.title}">
+    <div class="text-wrapper">
+        <h1>${glasses.title}</h1>
+        <h2>${glasses.price}</h2>
+    </div>`;
+    card.href = "./recipe.html?recipeId=" + glasses.id;
+       return card;
+  };
+  
+  const displayGlasses = async () => {
+    try {
+      const response = await fetch(glassesURL);
+      const glassesList = await response.json(); 
+  
+      glassesList.sort((a, b) => {
+        return a.price > b.price ? 1 : -1;
+      }).forEach((glasses) => {
+        const card = buildCard(glasses);
+        cardList.append(card);
+      });
+    } catch (error) {
+      console.error("Error getting glasses:", error);
     }
-  ]
+  };
+  
+  displayGlasses();
