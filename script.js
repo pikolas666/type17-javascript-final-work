@@ -23,14 +23,12 @@ const buildCard = (glasses) => {
       const response = await fetch(glassesURL);
       const glassesList = await response.json(); 
   
-      glassesList.sort((a, b) => {
-        return a.price > b.price ? 1 : -1;
-      }).forEach((glasses) => {
+      glassesList.sort((a, b) => a.price - b.price).forEach((glasses) => {
         const card = buildCard(glasses);
         cardList.append(card);
       });
     } catch (error) {
-      console.error("Error getting glasses:", error);
+      throw error;
     }
   };
   

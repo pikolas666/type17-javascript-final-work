@@ -34,17 +34,21 @@ header{
     align-items: center;
 
 }
-.nav button{
+.all-cards{
+    all: unset;
+    cursor: pointer;
+    color: white;
+    font-size: 25px;
+    font-weight: 600;
+}
+.add-card{
+    all: unset;
     background-color: #3EA316;
     border:none;
     border-radius: 5px;
     width:250px;
     height: 100%;
-    padding:1rem;
-    cursor: pointer;
-}
-.nav a{
-    all: unset;
+    padding:0.8rem;
     cursor: pointer;
     color: white;
     font-size: 25px;
