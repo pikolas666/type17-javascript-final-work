@@ -14,17 +14,25 @@
     <div>
         <div class="page-wrapper">
             <header>
-                <a href="./index.html" class="logo">Akiniai pigiau</a>
+                <div class="logo">Akiniai pigiau</div>
                 <ul class="nav">
                     <li><a href="./index.html">Visi akiniai</a></li>
                     <li><button><a href="./addGlasses.html">+ Įdėkite skelbimą</a></button></li>
                 </ul>
             </header>
-            <div id ="card-list" class="card-list">
+            <div class="input-wrapper">
+                <input id="id" class="input" type="number" placeholder="ID">
+                <input id="title" class="input" type="text" placeholder="Pavadinimas">
+                <input id="price" class="input" type="number" placeholder="Kaina">
+                <input id="photo" class="input" type="text" placeholder="Nuotraukos URL">
+                <input id="description" class="input" type="text" placeholder="Produkto aprašymas">
+                <input id="id" class="input" type="number" placeholder="Pardavimo lokacija">
+                <button id="addBtn" class="addBtn">Pridėti kortelę</button>
+                <div id="message" class="message"></div>
             </div>
         </div>
     </div>
     
-    <script src="./script.js"></script>
+    <script src="./addCard.js"></script>
 </body>
 </html>
