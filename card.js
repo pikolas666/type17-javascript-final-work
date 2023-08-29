@@ -34,7 +34,7 @@ const getCardData = async(itemId)=> {
   }
 
   deleteBtn.addEventListener('click', async ()=>{
-    const message = document.getElementById('message');
+    const message = document.getElementById('deleteMessage');
   
     try {
       const response = await fetch(glassesURL + itemId, {
@@ -46,7 +46,7 @@ const getCardData = async(itemId)=> {
         body: JSON.stringify()
       });
   
-      if (response.ok) {
+      if (response) {
         const data = await response.json();
         if (data) {
           message.innerHTML = "Success, glasses Deleted!";

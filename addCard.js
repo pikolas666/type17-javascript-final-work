@@ -1,4 +1,6 @@
 const addBtn = document.getElementById('addBtn');
+const addMessage = document.getElementById('addMessage');
+
 addBtn.addEventListener('click',()=>{
     const id = document.getElementById('id').value;
     const title = document.getElementById('title').value;
@@ -29,12 +31,18 @@ addBtn.addEventListener('click',()=>{
               body: JSON.stringify(newCard),
             }
           );
-          const data = await response.json();
-          return data;
+          if(response){
+            addMessage.setAttribute('style', ' color:#339900;')
+            addMessage.innerHTML = "New Card added successfuly"
+          } else {
+            addMessage.setAttribute('style', 'color: red')
+            addMessage.innerHTML = "Failed to add a New Card"
+          }
         } catch (err) {
           return false;
         }
       };
       addCard(newCard)
+     
 });
 
