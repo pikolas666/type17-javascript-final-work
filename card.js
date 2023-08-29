@@ -1,6 +1,8 @@
 const itemId = localStorage.getItem('card');
 const glassesURL = "https://64ec4552f9b2b70f2bfa0585.mockapi.io/akiniai/";
 const deleteBtn = document.getElementById("deleteBtn");
+const message = document.getElementById('deleteMessage');
+
 
 const buildGlassesCard = (glasses) => {
     const title = document.getElementById("title");
@@ -22,49 +24,58 @@ const buildGlassesCard = (glasses) => {
     location.innerHTML = glasses.location;
   };
   
-const getCardData = async(itemId)=> {
+  const getCardData = async (itemId) => {
     try {
-      const response = await fetch(glassesURL + itemId);
-      const card = await response.json();
-      return card;
-    } catch (error) {
-      console.error("Error fetching card data:", error);
-      return false;
-    }
-  }
-
-  deleteBtn.addEventListener('click', async ()=>{
-    const message = document.getElementById('deleteMessage');
-  
-    try {
-      const response = await fetch(glassesURL + itemId, {
-        method: 'DELETE',
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify()
-      });
-  
-      if (response) {
-        const data = await response.json();
-        if (data) {
-          message.innerHTML = "Success, glasses Deleted!";
-          setTimeout(() => {
-            window.location.replace("./index.html");
-          }, 5000);
+        const response = await fetch(glassesURL + itemId);
+        if (!response) {
+            throw new Error("Failed to fetch card data");
         }
-      } else {
-        message.innerHTML = "Failed to delete glasses";
-      }
-    } catch (err) {
-      message.innerHTML = "Failed to delete glasses";
+        const card = await response.json();
+        return card;
+    } catch (error) {
+        console.error("Error fetching card data:", error);
+        throw error;
     }
-  })
-  
-  const displayCard = async () => {
-    const card = await getCardData(itemId);
-    card && buildGlassesCard(card);
-  };
-  
-  displayCard();
+};
+
+  const deleteCard = async () => {
+    const response = await fetch(glassesURL + itemId, {
+        method: "DELETE",
+    });
+
+    if (!response) {
+        throw new Error("Failed to delete glasses");
+    }
+
+    const data = await response.json();
+    return data;
+};
+
+const onCardDeleted = (data, error) => {
+  if (data) {
+      message.innerHTML = "Success, glasses Deleted!";
+      setTimeout(() => {
+          window.location.replace("./index.html");
+      }, 5000);
+  } else {
+      message.innerHTML = error || "Failed to delete glasses";
+  }
+};
+
+const onClickDeleteButton = async () => {
+  try {
+      const response = await deleteCard();
+      onCardDeleted(response);
+  } catch (err) {
+      onCardDeleted(null, "Failed to delete glasses");
+  }
+};
+
+deleteBtn.addEventListener('click',onClickDeleteButton) 
+
+const displayCard = async () => {
+  const card = await getCardData(itemId);
+  card && buildGlassesCard(card);
+};
+
+displayCard();
