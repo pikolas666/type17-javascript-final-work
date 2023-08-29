@@ -32,6 +32,36 @@ const getCardData = async(itemId)=> {
       return false;
     }
   }
+
+  deleteBtn.addEventListener('click', async ()=>{
+    const message = document.getElementById('message');
+  
+    try {
+      const response = await fetch(glassesURL + itemId, {
+        method: 'DELETE',
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify()
+      });
+  
+      if (response.ok) {
+        const data = await response.json();
+        if (data) {
+          message.innerHTML = "Success, glasses Deleted!";
+          setTimeout(() => {
+            window.location.replace("./index.html");
+          }, 5000);
+        }
+      } else {
+        message.innerHTML = "Failed to delete glasses";
+      }
+    } catch (err) {
+      message.innerHTML = "Failed to delete glasses";
+    }
+  })
+  
   const displayCard = async () => {
     const card = await getCardData(itemId);
     card && buildGlassesCard(card);
