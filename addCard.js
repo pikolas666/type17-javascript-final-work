@@ -9,6 +9,26 @@ addBtn.addEventListener('click',()=>{
     const description = document.getElementById('description').value;
     const location = document.getElementById('location').value;
 
+    const validateURL = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/;
+    if (!id){
+        throw new Error('no ID');
+      }
+    if (!title){
+      throw new Error('no title');
+    }
+    if (!price){
+      throw new Error('no price');
+    }
+    if (!description){
+      throw new Error('no description');
+    }
+    if (!location){
+        throw new Error('no location');
+      }
+    if (!validateURL.test(photoURL)){
+      throw new Error('bad link');
+    }
+
     const newCard = {
         title: title,
         price: price,
@@ -17,7 +37,7 @@ addBtn.addEventListener('click',()=>{
         location: location,
         id: id
     }
-    console.log(newCard);
+   
     const addCard = async (newCard) => {
         try {
           const response = await fetch(
@@ -34,6 +54,9 @@ addBtn.addEventListener('click',()=>{
           if(response){
             addMessage.setAttribute('style', ' color:#339900;')
             addMessage.innerHTML = "New Card added successfuly"
+            setTimeout(() => {
+                window.location.replace("./index.html");
+              }, 3000);
           } else {
             addMessage.setAttribute('style', 'color: red')
             addMessage.innerHTML = "Failed to add a New Card"
