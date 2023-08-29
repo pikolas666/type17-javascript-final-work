@@ -69,7 +69,7 @@ header{
     border:none;
     border-radius: 5px;
     height: 100%;
-    padding:0.5rem 1rem;
+    padding: 0.3rem 0.9rem;
     cursor: pointer;
     color: white;
     font-weight: bold;
@@ -156,6 +156,7 @@ header{
     display: flex;
     justify-content: space-between;
     padding:1rem;
+    align-items: center;
 }
 .price {
     color: #419422;
@@ -227,18 +228,7 @@ header{
     text-align: center;
     font-size: 20px;
 }
-@media only screen and (max-width: 768px) {
-    .add-card{
-        display: none;
-    }
-    .add-card-mobile{
-        display: flex;
-        font-size: 25px;
-    }
-    .nav{
-        gap:10px;
-    }
-}
+
 @media only screen and (max-width: 992px) {
     .logo{
         font-size: 15px;
@@ -258,5 +248,25 @@ header{
     }
     .card h1{
         font-size: 10px;
+    }
+    .price {
+        font-size: 25px;
+        line-height: 25px;
+    }
+}
+@media only screen and (max-width: 768px) {
+    .add-card{
+        display: none;
+    }
+    .add-card-mobile{
+        display: flex;
+        font-size: 25px;
+    }
+    .nav{
+        gap:10px;
+    }
+    .price {
+        font-size: 18px;
+        line-height: 18px;
     }
 }
